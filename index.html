@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treinamento Completo - Rendapê</title>
+    <title>Onboarding & Treinamento - Rendapê</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* --- ESTILOS GERAIS (Design System "Dark Tech") --- */
+        /* --- DESIGN SYSTEM "DARK TECH CORPORATE" --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background-color: #050505; font-family: 'Inter', sans-serif; display: grid; place-items: center; gap: 40px; padding: 40px 0; color: #e2e8f0; }
 
@@ -20,24 +20,26 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
             display: flex; flex-direction: column;
             border: 1px solid rgba(124, 58, 237, 0.1);
+            scroll-snap-align: center;
         }
 
-        /* Tech Background Accents */
+        /* Background FX */
         .slide-container::before {
             content: ''; position: absolute; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
             top: -150px; right: -150px; pointer-events: none; z-index: 0;
         }
 
         .slide-content {
             position: relative; z-index: 2; width: 100%; height: 100%;
-            display: flex; flex-direction: column; padding: 60px;
+            display: flex; flex-direction: column; padding: 70px 60px; /* Increased top padding */
         }
 
         /* Tipografia */
-        h1, h2, h3 { font-family: 'Outfit', sans-serif; color: #fff; line-height: 1.1; }
-        h1 { font-size: 64px; font-weight: 700; letter-spacing: -2px; }
-        h2 { font-size: 42px; font-weight: 600; letter-spacing: -1px; margin-bottom: 25px; }
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; color: #fff; line-height: 1.1; }
+        /* Max-width adicionado para evitar sobreposição com a logo */
+        h1 { font-size: 64px; font-weight: 700; letter-spacing: -2px; max-width: 80%; } 
+        h2 { font-size: 42px; font-weight: 600; letter-spacing: -1px; margin-bottom: 25px; max-width: 80%; }
         h3 { font-size: 24px; font-weight: 500; color: #a78bfa; margin-bottom: 15px; }
         p, li { font-size: 18px; line-height: 1.5; color: #cbd5e1; margin-bottom: 10px; }
 
@@ -46,9 +48,18 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* Logos - AUMENTADA CONFORME SOLICITADO */
-        .logo-top-right { position: absolute; top: 40px; right: 40px; height: 120px; opacity: 1; z-index: 10; }
-        
+        /* Logo Global - REPOSICIONADA */
+        .logo-top-right { 
+            position: absolute; 
+            top: 50px; 
+            right: 50px; 
+            width: 180px; /* Tamanho ajustado para elegância */
+            height: auto; 
+            opacity: 1; 
+            z-index: 20;
+            filter: drop-shadow(0 0 15px rgba(0,0,0,0.6));
+        }
+
         /* Componentes */
         .card {
             background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
@@ -68,62 +79,463 @@
             display: inline-block; padding: 5px 12px; border-radius: 50px;
             font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 15px;
         }
+        .badge-onboarding { background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); }
         .badge-product { background: rgba(59, 130, 246, 0.2); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3); }
         .badge-sales { background: rgba(139, 92, 246, 0.2); color: #d8b4fe; border: 1px solid rgba(139, 92, 246, 0.3); }
 
-        /* Grids & Layouts */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; height: 100%; align-items: center; }
+        /* Layouts */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; height: 100%; align-items: center; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         
-        /* Timeline Horizontal */
-        .process-line {
-            display: flex; justify-content: space-between; align-items: center; margin-top: 40px; position: relative;
-        }
-        .process-line::before {
-            content: ''; position: absolute; top: 25px; left: 0; width: 100%; height: 2px;
-            background: rgba(255,255,255,0.1); z-index: 0;
-        }
-        .process-step { text-align: center; position: relative; z-index: 1; flex: 1; }
-        .step-icon {
-            width: 50px; height: 50px; background: #0f172a; border: 2px solid #7c3aed;
-            border-radius: 50%; display: grid; place-items: center; margin: 0 auto 15px;
-            color: #fff; font-size: 18px;
+        .section-divider {
+            width: 100px; height: 4px; background: #7c3aed; margin: 20px 0;
         }
     </style>
 </head>
 <body>
 
-<!-- SLIDE 1: GLOBAL COVER -->
+<!-- SLIDE 1: CAPA GLOBAL -->
 <div class="slide-container" id="slide-global-cover">
     <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" alt="Rendapê Logo" class="logo-top-right">
     
     <div class="slide-content" style="justify-content: center; align-items: flex-start;">
-        <div class="badge badge-product">Treinamento Oficial</div>
-        <h1 class="text-gradient" style="font-size: 72px; line-height: 1;">Produto &<br>Playbook RDR</h1>
+        <div class="badge badge-onboarding">RENDAPÊ ACADEMY</div>
+        <h1 class="text-gradient" style="font-size: 80px; line-height: 1;">Onboarding &<br>Formação</h1>
         <p style="font-size: 24px; color: #94a3b8; margin-top: 20px; max-width: 600px;">
-            Domine o modelo de investimento imobiliário sem entrada e aprenda a vendê-lo com autoridade.
+            Cultura, Produto e Vendas. Sua jornada para se tornar um Fundador Expandido começa agora.
         </p>
-        <div style="margin-top: 40px; display: flex; gap: 20px;">
-            <a href="#slide-product-1" class="btn">Módulo 1: Produto</a>
-            <a href="#slide-playbook-1" class="btn" style="background: rgba(255,255,255,0.1);">Módulo 2: Vendas</a>
+        <div style="margin-top: 50px; display: flex; gap: 20px;">
+            <a href="#slide-onb-1" class="btn">1. Cultura (Onboarding)</a>
+            <a href="#slide-prod-1" class="btn" style="background: rgba(59, 130, 246, 0.2); border: 1px solid rgba(59, 130, 246, 0.4);">2. Produto</a>
+            <a href="#slide-sales-1" class="btn" style="background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.4);">3. Playbook RDR</a>
         </div>
     </div>
 </div>
 
 <!-- ========================================== -->
-<!-- MÓDULO 1: TREINAMENTO DE PRODUTO -->
+<!-- SEÇÃO 1: ONBOARDING (CULTURA) -->
 <!-- ========================================== -->
 
-<!-- SLIDE 2: O QUE É A RENDAPÊ -->
-<div class="slide-container" id="slide-product-1">
+<!-- ONB 01: ABERTURA DE IMPACTO -->
+<div class="slide-container" id="slide-onb-1">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content" style="justify-content: center; text-align: left;">
+        <div class="badge badge-onboarding">01. Boas Vindas</div>
+        <h1 class="text-gradient">Bem vindo à RENDAPÊ.</h1>
+        <div class="section-divider"></div>
+        <p style="font-size: 32px; color: #fff; max-width: 850px; line-height: 1.4;">
+            A startup que nasce dentro de um grupo que movimenta centenas de milhões por ano e está construindo o futuro da renda imobiliária no Brasil.
+        </p>
+        <div style="margin-top: 40px; background: rgba(124, 58, 237, 0.1); padding: 30px; border-left: 4px solid #7c3aed; border-radius: 0 12px 12px 0; max-width: 800px;">
+            <h3 style="margin: 0; color: #fff;">"Você não está entrando em uma empresa.<br>Você está entrando em um movimento."</h3>
+        </div>
+    </div>
+</div>
+
+<!-- ONB 02: QUEM ESTÁ POR TRÁS (TEXTO) -->
+<div class="slide-container" id="slide-onb-2">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content" style="justify-content: center; text-align: center; align-items: center;">
+        <div class="badge badge-onboarding">02. Credibilidade</div>
+        <h2 class="text-gradient" style="font-size: 50px; margin-bottom: 40px; max-width: 800px;">Quem está por trás da Rendapê</h2>
+        <p style="font-size: 24px; max-width: 800px; margin: 0 auto 40px;">Somos uma startup com a força, o capital e a musculatura de um grupo gigante.</p>
+        
+        <div style="display: flex; justify-content: center; gap: 40px;">
+            <div class="card" style="padding: 40px;">
+                <i class="fa-solid fa-building-columns" style="color: #4ade80; font-size: 40px; margin-bottom: 20px;"></i>
+                <strong style="color: #fff; font-size: 32px; display: block;">+ R$ 500 Milhões/ano</strong>
+                <div style="font-size: 18px; color: #94a3b8;">Em consórcio (Referência Capital)</div>
+            </div>
+            <div class="card" style="padding: 40px;">
+                <i class="fa-solid fa-heart-pulse" style="color: #3b82f6; font-size: 40px; margin-bottom: 20px;"></i>
+                <strong style="color: #fff; font-size: 32px; display: block;">+ R$ 5 Milhões/ano</strong>
+                <div style="font-size: 18px; color: #94a3b8;">Em planos de saúde</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ONB 02.5: QUEM ESTÁ POR TRÁS (IMAGEM COMPLETA) -->
+<div class="slide-container" style="padding: 0; background-color: #000; display: flex; justify-content: center; align-items: center;">
+    <img src="https://i.ibb.co/nJDD70F/01.jpg" alt="Empresas do Grupo" style="width: 100%; height: 100%; object-fit: contain;">
+</div>
+
+<!-- ONB 03: O QUE ISSO SIGNIFICA -->
+<div class="slide-container" id="slide-onb-3">
     <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
     <div class="slide-content">
-        <div class="badge badge-product">Módulo 1 - O Produto</div>
+        <div class="badge badge-onboarding">03. Oportunidade</div>
+        <h2 class="text-gradient">O que isso significa para você?</h2>
+        
+        <div class="grid-2">
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="card">
+                    <h3 style="margin-bottom: 5px; color: #fff;"><i class="fa-solid fa-rocket" style="color: #a78bfa;"></i> Velocidade de Startup</h3>
+                    <p style="font-size: 16px;">Sem burocracia, com inovação.</p>
+                </div>
+                <div class="card">
+                    <h3 style="margin-bottom: 5px; color: #fff;"><i class="fa-solid fa-shield-halved" style="color: #a78bfa;"></i> Segurança de Grupo</h3>
+                    <p style="font-size: 16px;">Estrutura sólida por trás.</p>
+                </div>
+                <div class="card">
+                    <h3 style="margin-bottom: 5px; color: #fff;"><i class="fa-solid fa-fingerprint" style="color: #a78bfa;"></i> Influência Real</h3>
+                    <p style="font-size: 16px;">Chance de definir processos e cultura.</p>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; text-align: center; border: 1px dashed rgba(255,255,255,0.2); border-radius: 20px; padding: 40px;">
+                <div>
+                    <i class="fa-solid fa-user-astronaut" style="font-size: 60px; color: #fff; margin-bottom: 20px;"></i>
+                    <h2 style="color: #7c3aed;">Fundador Expandido</h2>
+                    <p style="font-size: 20px;">Aqui, quem entra cedo não é colaborador.<br>É dono.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ONB 04: HISTÓRIA E MOTIVO -->
+<div class="slide-container" id="slide-onb-4">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content">
+        <div class="badge badge-onboarding">04. A Origem</div>
+        <h2 class="text-gradient">Por que existimos?</h2>
+        <p style="font-size: 24px; color: #fff; font-style: italic; margin-bottom: 40px; max-width: 900px;">
+            "Por que precisa ser tão difícil investir em um imóvel no Brasil?"
+        </p>
+
+        <div class="grid-3">
+            <div class="card" style="border-top: 4px solid #ef4444;">
+                <h3 style="color: #ef4444; margin-bottom: 10px;">O Sistema Exige</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 15px;">
+                    <li><i class="fa-solid fa-xmark" style="color: #ef4444;"></i> Entrada Alta</li>
+                    <li><i class="fa-solid fa-xmark" style="color: #ef4444;"></i> Burocracia Absurda</li>
+                    <li><i class="fa-solid fa-xmark" style="color: #ef4444;"></i> Medo de Errar</li>
+                </ul>
+            </div>
+            <div class="card" style="grid-column: span 2; display: flex; flex-direction: column; justify-content: center; background: rgba(124, 58, 237, 0.1);">
+                <h3 style="color: #fff;">A Resposta RENDAPÊ</h3>
+                <p style="font-size: 22px; color: #e2e8f0;">Nascemos para quebrar esse modelo. Tornamos o investimento imobiliário tão simples quanto assinar um serviço.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ONB 05: O PROBLEMA -->
+<div class="slide-container" id="slide-onb-5">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content">
+        <div class="badge badge-onboarding">05. O Problema</div>
+        <h2 class="text-gradient">O Mercado está Quebrado</h2>
+        
         <div class="grid-2">
             <div>
-                <h2 class="text-gradient">O que é a RENDAPÊ?</h2>
-                <p style="margin-bottom: 30px;">Não é consórcio tradicional, não é financiamento bancário.</p>
-                
+                <ul style="display: flex; flex-direction: column; gap: 20px; list-style: none;">
+                    <li style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fff;">1. Entrada Alta</strong> Trava 90% dos brasileiros.
+                    </li>
+                    <li style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fff;">2. Medo Técnico</strong> Ninguém quer ler contratos complexos.
+                    </li>
+                    <li style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fff;">3. Acesso Difícil</strong> O sistema financeiro joga contra.
+                    </li>
+                    <li style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fff;">4. Futuro Incerto</strong> Aposentadoria pública é um risco.
+                    </li>
+                </ul>
+            </div>
+            <div style="text-align: center;">
+                <i class="fa-solid fa-door-closed" style="font-size: 60px; color: #64748b; margin-bottom: 20px;"></i>
+                <h3 style="color: #fff; font-size: 28px;">O Brasil quer Renda.</h3>
+                <p>Mas não tem portas.</p>
+                <div style="margin-top: 30px;">
+                    <button class="btn" style="cursor: default;">A RENDAPÊ ABRIU A PORTA <i class="fa-solid fa-door-open"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ONB 06: ICP E DORES -->
+<div class="slide-container" id="slide-onb-6">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content">
+        <div class="badge badge-onboarding">06. O Cliente</div>
+        <h2 class="text-gradient">As 4 Dores Centrais</h2>
+        <p>Resolvemos todas ao mesmo tempo.</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
+            <div class="card">
+                <h3 style="color: #fff;"><i class="fa-solid fa-hourglass-half" style="color: #fca5a5;"></i> Tempo Perdido</h3>
+                <p style="font-size: 16px;">"A vida está passando e eu não construí patrimônio."</p>
+            </div>
+            <div class="card">
+                <h3 style="color: #fff;"><i class="fa-solid fa-hand-holding-dollar" style="color: #fca5a5;"></i> Entrada Alta</h3>
+                <p style="font-size: 16px;">"Tenho mensalidade, mas não tenho 100k agora."</p>
+            </div>
+            <div class="card">
+                <h3 style="color: #fff;"><i class="fa-solid fa-brain" style="color: #fca5a5;"></i> Falta de Conhecimento</h3>
+                <p style="font-size: 16px;">"Quero investir, mas não entendo de finanças."</p>
+            </div>
+            <div class="card">
+                <h3 style="color: #fff;"><i class="fa-solid fa-person-cane" style="color: #fca5a5;"></i> Aposentadoria</h3>
+                <p style="font-size: 16px;">"Não quero depender do INSS."</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ONB 07: O MERCADO -->
+<div class="slide-container" id="slide-onb-7">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content">
+        <div class="badge badge-onboarding">07. Timing</div>
+        <h2 class="text-gradient">A Virada de Mercado</h2>
+        
+        <div class="grid-2">
+            <div>
+                <ul style="display: flex; flex-direction: column; gap: 25px;">
+                    <li style="font-size: 20px;"><strong style="color: #4ade80;">+180%</strong> Crescimento da locação por temporada (3 anos).</li>
+                    <li style="font-size: 20px;"><strong style="color: #3b82f6;">Nova Geração</strong> quer retorno rápido, não em 30 anos.</li>
+                    <li style="font-size: 20px;"><strong style="color: #a78bfa;">Liberdade</strong> financeira real é a meta nº 1.</li>
+                </ul>
+            </div>
+            <div class="card" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
+                <i class="fa-solid fa-chart-line" style="font-size: 80px; color: #fff; margin-bottom: 20px;"></i>
+                <p style="font-size: 24px; color: #fff;">Nunca houve tanta demanda por imóveis de investimento.</p>
+                <p style="color: #a78bfa; margin-top: 10px;">A RENDAPÊ está no centro.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ONB 08: O MODELO -->
+<div class="slide-container" id="slide-onb-8">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content">
+        <div class="badge badge-onboarding">08. A Solução</div>
+        <h2 class="text-gradient">O Modelo RENDAPÊ</h2>
+        <p>Simplicidade, acesso e inteligência.</p>
+
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 30px;">
+            <div style="background: #1e1b4b; padding: 20px; border-radius: 12px; border: 1px solid #7c3aed; width: 30%;">
+                <h3 style="font-size: 18px; margin: 0; color: #fff;">Sem Entrada</h3>
+                <p style="font-size: 14px; margin-top: 5px; color: #a78bfa;">A barreira some.</p>
+            </div>
+            <div style="background: #1e1b4b; padding: 20px; border-radius: 12px; border: 1px solid #7c3aed; width: 30%;">
+                <h3 style="font-size: 18px; margin: 0; color: #fff;">Parcelas Leves</h3>
+                <p style="font-size: 14px; margin-top: 5px; color: #a78bfa;">Cabe no bolso.</p>
+            </div>
+            <div style="background: #1e1b4b; padding: 20px; border-radius: 12px; border: 1px solid #7c3aed; width: 30%;">
+                <h3 style="font-size: 18px; margin: 0; color: #fff;">Valorização</h3>
+                <p style="font-size: 14px; margin-top: 5px; color: #a78bfa;">Cresce na obra.</p>
+            </div>
+            <div style="background: #1e1b4b; padding: 20px; border-radius: 12px; border: 1px solid #7c3aed; width: 45%;">
+                <h3 style="font-size: 18px; margin: 0; color: #fff;">Renda na Entrega</h3>
+                <p style="font-size: 14px; margin-top: 5px; color: #a78bfa;">Aluguel tradicional ou temporada.</p>
+            </div>
+            <div style="background: #1e1b4b; padding: 20px; border-radius: 12px; border: 1px solid #7c3aed; width: 45%;">
+                <h3 style="font-size: 18px; margin: 0; color: #fff;">Gestão Total</h3>
+                <p style="font-size: 14px; margin-top: 5px; color: #a78bfa;">Zero trabalho para o cliente.</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-weight: 600;">No final: o imóvel trabalha para o cliente, não o contrário.</p>
+    </div>
+</div>
+
+<!-- ONB 09: MVV -->
+<div class="slide-container" id="slide-onb-9">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content">
+        <div class="badge badge-onboarding">09. Norte</div>
+        <h2 class="text-gradient">Missão, Visão e Valores</h2>
+        
+        <div class="grid-3">
+            <div class="card" style="display: flex; flex-direction: column;">
+                <i class="fa-solid fa-flag" style="font-size: 30px; color: #fff; margin-bottom: 20px;"></i>
+                <h3 style="color: #fff;">Missão</h3>
+                <p style="font-size: 16px;">Democratizar o investimento imobiliário, permitindo que qualquer pessoa construa patrimônio sem entrada e sem depender do sistema tradicional.</p>
+            </div>
+            <div class="card" style="display: flex; flex-direction: column;">
+                <i class="fa-solid fa-eye" style="font-size: 30px; color: #fff; margin-bottom: 20px;"></i>
+                <h3 style="color: #fff;">Visão</h3>
+                <p style="font-size: 16px;">Ser o maior ecossistema de renda imobiliária da América Latina, formando milhões de novos investidores.</p>
+            </div>
+            <div class="card" style="display: flex; flex-direction: column;">
+                <i class="fa-solid fa-diamond" style="font-size: 30px; color: #fff; margin-bottom: 20px;"></i>
+                <h3 style="color: #fff;">Valores</h3>
+                <p style="font-size: 14px; line-height: 1.8;">
+                    Impacto Real • Simplicidade • Velocidade com Profundidade • Transparência • Lealdade • Obsessão pelo Cliente • Dono da Cadeira • Ética.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ONB 10: CULTURA -->
+<div class="slide-container" id="slide-onb-10">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content">
+        <div class="badge badge-onboarding">10. Código de Conduta</div>
+        <h2 class="text-gradient">Os 7 Mandamentos da Cultura</h2>
+        
+        <div style="columns: 2; column-gap: 50px;">
+            <div class="card" style="margin-bottom: 20px; break-inside: avoid;">
+                <strong style="color: #7c3aed;">1.</strong> Impacto acima de aparência.
+            </div>
+            <div class="card" style="margin-bottom: 20px; break-inside: avoid;">
+                <strong style="color: #7c3aed;">2.</strong> Lealdade absoluta.
+            </div>
+            <div class="card" style="margin-bottom: 20px; break-inside: avoid;">
+                <strong style="color: #7c3aed;">3.</strong> A verdade sempre.
+            </div>
+            <div class="card" style="margin-bottom: 20px; break-inside: avoid;">
+                <strong style="color: #7c3aed;">4.</strong> Obsessão pelo cliente.
+            </div>
+            <div class="card" style="margin-bottom: 20px; break-inside: avoid;">
+                <strong style="color: #7c3aed;">5.</strong> Velocidade com responsabilidade.
+            </div>
+            <div class="card" style="margin-bottom: 20px; break-inside: avoid;">
+                <strong style="color: #7c3aed;">6.</strong> Zero ego, zero vitimismo.
+            </div>
+            <div class="card" style="margin-bottom: 20px; break-inside: avoid;">
+                <strong style="color: #7c3aed;">7.</strong> Responsabilidade total pela sua cadeira.
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; text-align: center;">
+            <p style="font-size: 24px; color: #fff;">Cultura não é frase. É comportamento diário.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ONB 11: O FUTURO -->
+<div class="slide-container" id="slide-onb-11">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content">
+        <div class="badge badge-onboarding">11. Construção</div>
+        <h2 class="text-gradient">O Que Estamos Construindo</h2>
+        <p>A operação com maior potencial do grupo.</p>
+        
+        <div class="grid-2">
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <div class="card">
+                    <h3 style="font-size: 20px; color: #fff; margin: 0;">1. Maior ecossistema de renda</h3>
+                    <p style="font-size: 14px; margin: 5px 0 0;">Venda + Gestão + Tecnologia.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size: 20px; color: #fff; margin: 0;">2. Maior comunidade de investidores</h3>
+                    <p style="font-size: 14px; margin: 5px 0 0;">Gente que indica, confia e reinveste.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size: 20px; color: #fff; margin: 0;">3. Ativo gigante e recorrente</h3>
+                    <p style="font-size: 14px; margin: 5px 0 0;">Renda estável e previsível.</p>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <i class="fa-solid fa-map-location-dot" style="font-size: 80px; color: #64748b; margin-bottom: 20px;"></i>
+                <h3 style="color: #fff;">Porta de Entrada</h3>
+                <p>Para a liberdade financeira no Brasil.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ONB 12: SUA OPORTUNIDADE -->
+<div class="slide-container" id="slide-onb-12">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
+        <div class="badge badge-onboarding">12. Seu Papel</div>
+        <h2 class="text-gradient">Você não veio cumprir tarefas.</h2>
+        <p style="font-size: 24px; color: #fff;">Você veio para:</p>
+        
+        <div style="display: flex; gap: 15px; margin-top: 30px;">
+            <div class="btn" style="cursor: default;">Criar Padrões</div>
+            <div class="btn" style="cursor: default;">Definir Cultura</div>
+            <div class="btn" style="cursor: default;">Impactar Vidas</div>
+            <div class="btn" style="cursor: default;">Deixar Legado</div>
+        </div>
+        
+        <p style="margin-top: 40px; color: #94a3b8;">Você é peça-chave no momento mais importante da história da RENDAPÊ.</p>
+    </div>
+</div>
+
+<!-- ONB 13: REGRA DE OURO -->
+<div class="slide-container" id="slide-onb-13">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
+        <div class="badge badge-onboarding">13. Excelência</div>
+        <i class="fa-solid fa-medal" style="font-size: 60px; color: #f59e0b; margin-bottom: 20px;"></i>
+        <h2 class="text-gradient">A Regra de Ouro</h2>
+        <div style="background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; max-width: 800px; border: 1px solid rgba(255,255,255,0.1);">
+            <h1 style="font-size: 50px; color: #fff; margin-bottom: 20px;">Ninguém é pago para ser rápido.<br>É pago para ser <span style="color: #7c3aed;">BOM</span>.</h1>
+            <p style="font-size: 20px; color: #cbd5e1;">Entregar rápido é obrigatório.<br>Entregar com profundidade é o diferencial.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ONB 14: COMPROMISSO -->
+<div class="slide-container" id="slide-onb-14">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content" style="justify-content: center; align-items: center;">
+        <div class="badge badge-onboarding">14. O Pacto</div>
+        <h2 class="text-gradient">Ritual de Compromisso</h2>
+        
+        <div class="card" style="max-width: 800px; text-align: center; border: 1px solid #7c3aed; box-shadow: 0 0 30px rgba(124, 58, 237, 0.2);">
+            <p style="font-size: 24px; line-height: 1.6; color: #fff;">
+                "Eu me comprometo a viver a cultura RENDAPÊ todos os dias.<br>
+                A proteger o cliente, o time e a visão.<br>
+                A construir com verdade, velocidade e excelência.<br>
+                A assumir responsabilidade total pelo que entrego.<br>
+                E a ajudar a transformar a RENDAPÊ no maior ecossistema de renda imobiliária do Brasil."
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- ONB 15: MENSAGEM DO FUNDADOR -->
+<div class="slide-container" id="slide-onb-15">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content" style="justify-content: center;">
+        <div class="grid-2">
+            <div>
+                <div class="badge badge-onboarding">15. Mensagem Final</div>
+                <h2 class="text-gradient">Do Fundador</h2>
+                <div style="position: relative; padding-left: 30px; border-left: 4px solid #fff;">
+                    <p style="font-size: 20px; color: #e2e8f0; font-style: italic; line-height: 1.6;">
+                        "Você está entrando no começo, e o começo é para poucos. 
+                        A RENDAPÊ é o movimento mais ambicioso que este grupo já criou. 
+                        Temos força, visão, mercado e missão. 
+                        Agora faltava uma coisa: as pessoas certas. 
+                        E é por isso que você está aqui."
+                    </p>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                <h1 style="font-size: 50px; color: #fff;">Vamos transformar o Brasil.</h1>
+                <p style="font-size: 20px; color: #a78bfa;">Uma renda imobiliária por vez.</p>
+                <div style="margin-top: 40px;">
+                    <a href="#slide-prod-1" class="btn btn-primary" style="font-size: 20px; padding: 15px 40px;">IR PARA O PRODUTO <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- SEÇÃO 2: TREINAMENTO DE PRODUTO -->
+<!-- ========================================== -->
+
+<!-- SLIDE P1: CAPA MÓDULO PRODUTO -->
+<div class="slide-container" id="slide-prod-1">
+    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
+    <div class="slide-content" style="justify-content: center; align-items: flex-start;">
+        <div class="badge badge-product">Módulo 2 O Produto</div>
+        <h1 class="text-gradient">O que é a RENDAPÊ?</h1>
+        <p style="margin-bottom: 30px;">Entendendo o modelo de negócio.</p>
+        
+        <div class="grid-2">
+            <div>
                 <div class="card" style="border-left: 4px solid #3b82f6; margin-bottom: 20px;">
                     <h3><i class="fa-regular fa-building"></i> O Modelo</h3>
                     <p>Investimento imobiliário criado pelo CEO da Referência Capital, inspirado no conceito de consórcio contemplado, mas <strong>sem sorteios</strong> e com <strong>data fixa</strong>.</p>
@@ -150,8 +562,8 @@
     </div>
 </div>
 
-<!-- SLIDE 3: DIFERENCIAIS -->
-<div class="slide-container" id="slide-product-2">
+<!-- SLIDE P2: DIFERENCIAIS -->
+<div class="slide-container" id="slide-prod-2">
     <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
     <div class="slide-content">
         <h2 class="text-gradient">O "Escudo" Contra Objeções</h2>
@@ -161,192 +573,39 @@
             <div class="card">
                 <i class="fa-solid fa-ban" style="font-size: 30px; color: #ef4444; margin-bottom: 15px;"></i>
                 <h3>Sem Entrada</h3>
-                <p>O investidor não descapitaliza. Ele mantém o dinheiro rendendo no banco e paga a parcela com o fluxo mensal.</p>
+                <p>O investidor não descapitaliza.</p>
             </div>
             <div class="card">
                 <i class="fa-solid fa-lock" style="font-size: 30px; color: #f59e0b; margin-bottom: 15px;"></i>
-                <h3>Sem Juros Bancários</h3>
-                <p>Não depende de análise de crédito complexa ou taxas abusivas de financiamento.</p>
+                <h3>Sem Juros</h3>
+                <p>Sem taxas abusivas de banco.</p>
             </div>
             <div class="card">
                 <i class="fa-solid fa-calendar-check" style="font-size: 30px; color: #10b981; margin-bottom: 15px;"></i>
                 <h3>Previsibilidade</h3>
-                <p>Diferente do consórcio comum, ele sabe exatamente quando recebe o imóvel. Sem "sorte".</p>
+                <p>Sabe quando recebe o imóvel.</p>
             </div>
             <div class="card">
                 <i class="fa-solid fa-chart-line" style="font-size: 30px; color: #8b5cf6; margin-bottom: 15px;"></i>
                 <h3>Parcela Fixa</h3>
-                <p>Planejamento financeiro total. O valor não explode com indexadores surpresa.</p>
+                <p>Planejamento financeiro total.</p>
             </div>
             <div class="card">
                 <i class="fa-solid fa-shield-halved" style="font-size: 30px; color: #3b82f6; margin-bottom: 15px;"></i>
                 <h3>Blindagem</h3>
-                <p>Proteção contra inflação através de um ativo real (tijolo).</p>
+                <p>Ativo real contra inflação.</p>
             </div>
             <div class="card">
                 <i class="fa-solid fa-rocket" style="font-size: 30px; color: #ec4899; margin-bottom: 15px;"></i>
-                <h3>Sem Contemplação</h3>
-                <p>Não existe a ansiedade do "será que vou ser sorteado?". É matemático.</p>
+                <h3>Sem Sorteio</h3>
+                <p>É matemático, não é sorte.</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- SLIDE 4: COMO FUNCIONA -->
-<div class="slide-container" id="slide-product-3">
-    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
-    <div class="slide-content">
-        <h2 class="text-gradient">Como Funciona (Pitch de 1 Minuto)</h2>
-        <p>A explicação deve ser visual e linear para o cliente.</p>
-
-        <div class="process-line">
-            <div class="process-step">
-                <div class="step-icon"><i class="fa-solid fa-hand-pointer"></i></div>
-                <h3>1. Escolha</h3>
-                <p style="font-size: 14px;">Cliente escolhe imóvel na planta.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon"><i class="fa-solid fa-file-signature"></i></div>
-                <h3>2. Adesão</h3>
-                <p style="font-size: 14px;">Entra pagando apenas a 1ª parcela. Sem entrada.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon"><i class="fa-solid fa-bars-progress"></i></div>
-                <h3>3. Construção</h3>
-                <p style="font-size: 14px;">Paga parcelas fixas durante a obra.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon"><i class="fa-solid fa-key"></i></div>
-                <h3>4. Chaves</h3>
-                <p style="font-size: 14px;">Recebe o imóvel na data prevista.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
-                <h3>5. Renda</h3>
-                <p style="font-size: 14px;">RENDAPÊ assume gestão Airbnb. Cliente recebe.</p>
-            </div>
-        </div>
-
-        <div style="margin-top: 50px; text-align: center; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
-            <p style="margin: 0; font-style: italic; color: #a78bfa;">"Você planta a semente com parcelas acessíveis e colhe a árvore pronta gerando frutos, sem nunca ter desembolsado uma fortuna de entrada."</p>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 5: QUEM PODE INVESTIR -->
-<div class="slide-container" id="slide-product-4">
-    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
-    <div class="slide-content">
-        <h2 class="text-gradient">Perfil do Cliente (ICP)</h2>
-        
-        <div class="grid-2">
-            <div class="card" style="border-color: rgba(34, 197, 94, 0.3); background: rgba(34, 197, 94, 0.05);">
-                <h3 style="color: #4ade80; display: flex; align-items: center; gap: 10px;">
-                    <i class="fa-solid fa-check-circle"></i> Quem ATENDEMOS
-                </h3>
-                <ul style="list-style: none; margin-top: 20px; gap: 15px; display: flex; flex-direction: column;">
-                    <li><i class="fa-solid fa-earth-americas" style="color: #4ade80;"></i> <strong>Brasileiros no exterior</strong> (ganham em moeda forte).</li>
-                    <li><i class="fa-solid fa-user-tie" style="color: #4ade80;"></i> <strong>Investidor Iniciante</strong> (quer segurança).</li>
-                    <li><i class="fa-solid fa-piggy-bank" style="color: #4ade80;"></i> <strong>Foco em Aposentadoria</strong> (longo prazo).</li>
-                    <li><i class="fa-solid fa-layer-group" style="color: #4ade80;"></i> <strong>Construção de Patrimônio</strong> (sem travar renda).</li>
-                </ul>
-            </div>
-
-            <div class="card" style="border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.05);">
-                <h3 style="color: #f87171; display: flex; align-items: center; gap: 10px;">
-                    <i class="fa-solid fa-circle-xmark"></i> Quem NÃO atendemos
-                </h3>
-                <ul style="list-style: none; margin-top: 20px; gap: 15px; display: flex; flex-direction: column;">
-                    <li><i class="fa-solid fa-house-chimney" style="color: #f87171;"></i> <strong>Busca Moradia</strong> (quer mudar logo).</li>
-                    <li><i class="fa-solid fa-stopwatch" style="color: #f87171;"></i> <strong>Urgência Imediata</strong> (precisa da chave amanhã).</li>
-                    <li><i class="fa-solid fa-percent" style="color: #f87171;"></i> <strong>Especulador de Curto Prazo</strong> (flip rápido).</li>
-                </ul>
-                <div style="margin-top: 20px; font-size: 14px; color: #fca5a5; font-style: italic;">
-                    *Se o lead quer morar, indique educadamente que nosso modelo é exclusivo para investidores.
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 6: QUANTO CUSTA -->
-<div class="slide-container" id="slide-product-5">
-    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
-    <div class="slide-content">
-        <h2 class="text-gradient">Os Números do Negócio</h2>
-        <p>Dados para ancoragem de valor durante a qualificação.</p>
-
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 50px;">
-            <div class="card" style="text-align: center;">
-                <p style="font-size: 14px; text-transform: uppercase; color: #94a3b8;">Parcela Média</p>
-                <h3 style="font-size: 36px; color: #fff; margin: 10px 0;">3.5k<span style="font-size: 16px;">/mês</span></h3>
-                <p style="font-size: 12px; color: #64748b;">Acessível para classe média/alta</p>
-            </div>
-            <div class="card" style="text-align: center;">
-                <p style="font-size: 14px; text-transform: uppercase; color: #94a3b8;">Duração Típica</p>
-                <h3 style="font-size: 36px; color: #fff; margin: 10px 0;">30-40</h3>
-                <p style="font-size: 12px; color: #64748b;">Meses de construção</p>
-            </div>
-            <div class="card" style="text-align: center;">
-                <p style="font-size: 14px; text-transform: uppercase; color: #94a3b8;">Valorização</p>
-                <h3 style="font-size: 36px; color: #10b981; margin: 10px 0;">~18%</h3>
-                <p style="font-size: 12px; color: #64748b;">Ao ano (Projeção)</p>
-            </div>
-            <div class="card" style="text-align: center;">
-                <p style="font-size: 14px; text-transform: uppercase; color: #94a3b8;">Rentabilidade</p>
-                <h3 style="font-size: 36px; color: #3b82f6; margin: 10px 0;">Airbnb</h3>
-                <p style="font-size: 12px; color: #64748b;">Superior ao aluguel fixo</p>
-            </div>
-        </div>
-
-        <div style="margin-top: 40px; background: rgba(124, 58, 237, 0.1); border-radius: 12px; padding: 20px; display: flex; gap: 20px; align-items: center;">
-            <i class="fa-solid fa-lightbulb" style="color: #f59e0b; font-size: 24px;"></i>
-            <p style="margin: 0;"><strong>Argumento de Venda:</strong> "Com R$ 3.500/mês você compra um ativo de meio milhão sem precisar ter R$ 100 mil no banco para a entrada."</p>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 7: COMPARAÇÃO DE MERCADO -->
-<div class="slide-container" id="slide-product-6">
-    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
-    <div class="slide-content">
-        <h2 class="text-gradient">Por que a RENDAPÊ Vence?</h2>
-        
-        <table style="width: 100%; border-collapse: separate; border-spacing: 0 15px; margin-top: 20px;">
-            <thead>
-                <tr>
-                    <th style="text-align: left; color: #94a3b8; padding: 0 20px;">Critério</th>
-                    <th style="color: #ef4444;">Financiamento</th>
-                    <th style="color: #f59e0b;">Consórcio Comum</th>
-                    <th style="color: #7c3aed; font-size: 22px;">RENDAPÊ (Nós)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="background: rgba(255,255,255,0.03);">
-                    <td style="padding: 20px; border-radius: 10px 0 0 10px;">Entrada Necessária</td>
-                    <td style="text-align: center; color: #ef4444;">Alta (~20%)</td>
-                    <td style="text-align: center; color: #f59e0b;">Lance (se quiser rápido)</td>
-                    <td style="text-align: center; color: #10b981; font-weight: bold; border: 1px solid #7c3aed; border-right: none; border-top: none; border-bottom: none; background: rgba(124, 58, 237, 0.1);">ZERO</td>
-                </tr>
-                <tr style="background: rgba(255,255,255,0.03);">
-                    <td style="padding: 20px; border-radius: 10px 0 0 10px;">Previsibilidade</td>
-                    <td style="text-align: center; color: #10b981;">Imediata</td>
-                    <td style="text-align: center; color: #ef4444;">Sorteio (Aleatório)</td>
-                    <td style="text-align: center; color: #10b981; font-weight: bold; background: rgba(124, 58, 237, 0.1);">DATA FIXA</td>
-                </tr>
-                <tr style="background: rgba(255,255,255,0.03);">
-                    <td style="padding: 20px; border-radius: 10px 0 0 10px;">Custo Total</td>
-                    <td style="text-align: center; color: #ef4444;">2x ou 3x o imóvel (Juros)</td>
-                    <td style="text-align: center; color: #10b981;">Baixo (Taxa Adm)</td>
-                    <td style="text-align: center; color: #10b981; font-weight: bold; border-radius: 0 10px 10px 0; background: rgba(124, 58, 237, 0.1);">BAIXO</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<!-- SLIDE 8: O IMÓVEL - (RESTAURADO COM IMAGEM DO COLLAGE BELA VISTA) -->
-<div class="slide-container" id="slide-product-7">
+<!-- SLIDE P3: O ATIVO REAL (IMAGEM COLLAGE) -->
+<div class="slide-container" id="slide-prod-3">
     <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
     <div class="slide-content">
         <div class="grid-2">
@@ -357,32 +616,24 @@
                 
                 <div style="display: flex; flex-direction: column; gap: 20px;">
                     <div class="card" style="padding: 20px; display: flex; align-items: center; gap: 20px;">
-                        <div style="width: 50px; height: 50px; background: rgba(59, 130, 246, 0.1); border-radius: 50%; display: grid; place-items: center; flex-shrink: 0;">
-                            <i class="fa-solid fa-location-dot" style="font-size: 20px; color: #3b82f6;"></i>
-                        </div>
+                        <i class="fa-solid fa-location-dot" style="font-size: 24px; color: #3b82f6;"></i>
                         <div>
                             <h3 style="color: #fff; font-size: 18px; margin-bottom: 5px;">Localização Premium</h3>
-                            <p style="font-size: 14px; margin: 0; color: #94a3b8;">Áreas turísticas ou centros nervosos da cidade.</p>
+                            <p style="font-size: 14px; margin: 0; color: #94a3b8;">Centros nervosos da cidade.</p>
                         </div>
                     </div>
-
                     <div class="card" style="padding: 20px; display: flex; align-items: center; gap: 20px;">
-                        <div style="width: 50px; height: 50px; background: rgba(59, 130, 246, 0.1); border-radius: 50%; display: grid; place-items: center; flex-shrink: 0;">
-                            <i class="fa-solid fa-building" style="font-size: 20px; color: #3b82f6;"></i>
-                        </div>
+                        <i class="fa-solid fa-building" style="font-size: 24px; color: #3b82f6;"></i>
                         <div>
                             <h3 style="color: #fff; font-size: 18px; margin-bottom: 5px;">Compactos de Luxo</h3>
-                            <p style="font-size: 14px; margin: 0; color: #94a3b8;">Estúdios e 1Q otimizados para Airbnb.</p>
+                            <p style="font-size: 14px; margin: 0; color: #94a3b8;">Otimizados para Airbnb.</p>
                         </div>
                     </div>
-
                     <div class="card" style="padding: 20px; display: flex; align-items: center; gap: 20px;">
-                        <div style="width: 50px; height: 50px; background: rgba(59, 130, 246, 0.1); border-radius: 50%; display: grid; place-items: center; flex-shrink: 0;">
-                            <i class="fa-solid fa-bell-concierge" style="font-size: 20px; color: #3b82f6;"></i>
-                        </div>
+                        <i class="fa-solid fa-bell-concierge" style="font-size: 24px; color: #3b82f6;"></i>
                         <div>
                             <h3 style="color: #fff; font-size: 18px; margin-bottom: 5px;">Gestão Total</h3>
-                            <p style="font-size: 14px; margin: 0; color: #94a3b8;">Limpeza, check-in e manutenção.</p>
+                            <p style="font-size: 14px; margin: 0; color: #94a3b8;">Renda passiva real.</p>
                         </div>
                     </div>
                 </div>
@@ -404,130 +655,8 @@
     </div>
 </div>
 
-<!-- SLIDE 9: POR QUE AIRBNB -->
-<div class="slide-container" id="slide-product-8">
-    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
-    <div class="slide-content">
-        <h2 class="text-gradient">A Tese do Airbnb</h2>
-        <p>Por que preferimos Short-Stay ao aluguel tradicional?</p>
-
-        <div class="grid-2">
-            <div style="display: flex; flex-direction: column; gap: 20px;">
-                <div class="card" style="display: flex; align-items: center; gap: 20px;">
-                    <i class="fa-solid fa-hotel" style="font-size: 30px; color: #a78bfa;"></i>
-                    <div>
-                        <h3>Hotelaria Saturada</h3>
-                        <p style="font-size: 16px; margin: 0;">Diárias de hotel estão caras, empurrando turistas para o Airbnb.</p>
-                    </div>
-                </div>
-                <div class="card" style="display: flex; align-items: center; gap: 20px;">
-                    <i class="fa-solid fa-plane-departure" style="font-size: 30px; color: #a78bfa;"></i>
-                    <div>
-                        <h3>Turismo Interno</h3>
-                        <p style="font-size: 16px; margin: 0;">Explosão de viagens pós-pandemia e nômades digitais.</p>
-                    </div>
-                </div>
-                <div class="card" style="display: flex; align-items: center; gap: 20px;">
-                    <i class="fa-solid fa-money-bill-wave" style="font-size: 30px; color: #a78bfa;"></i>
-                    <div>
-                        <h3>Yield Superior</h3>
-                        <p style="font-size: 16px; margin: 0;">Rentabilidade mensal pode ser 2x maior que o aluguel anual comum.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Simple Bar Chart CSS -->
-            <div style="display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; background: rgba(255,255,255,0.02); border-radius: 20px;">
-                <div style="display: flex; align-items: flex-end; justify-content: space-around; height: 300px; width: 100%;">
-                    <div style="width: 100px; text-align: center;">
-                        <div style="height: 150px; background: #64748b; border-radius: 8px 8px 0 0; margin-bottom: 10px;"></div>
-                        <span style="font-size: 14px; color: #94a3b8;">Aluguel Comum</span>
-                    </div>
-                    <div style="width: 100px; text-align: center;">
-                        <div style="height: 280px; background: linear-gradient(to top, #7c3aed, #a78bfa); border-radius: 8px 8px 0 0; margin-bottom: 10px; position: relative;">
-                            <span style="position: absolute; top: -30px; left: 0; width: 100%; font-weight: bold; color: #a78bfa;">+80%</span>
-                        </div>
-                        <span style="font-size: 14px; color: #fff; font-weight: bold;">Airbnb RENDAPÊ</span>
-                    </div>
-                </div>
-                <p style="text-align: center; margin-top: 20px; font-size: 14px;">Rentabilidade Comparativa Estimada</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 10: JORNADA DO INVESTIDOR -->
-<div class="slide-container" id="slide-product-9">
-    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
-    <div class="slide-content">
-        <h2 class="text-gradient">A Jornada do Cliente</h2>
-        <p>Onde o RDR entra e onde ele entrega o bastão.</p>
-
-        <div style="display: flex; gap: 10px; margin-top: 40px; justify-content: center;">
-            <div style="width: 180px; text-align: center; opacity: 0.5;">
-                <div style="font-size: 30px; margin-bottom: 10px;"><i class="fa-brands fa-instagram"></i></div>
-                <h4>Anúncio</h4>
-            </div>
-            <i class="fa-solid fa-chevron-right" style="align-self: center; color: #333;"></i>
-            
-            <!-- RDR ZONE -->
-            <div style="width: 180px; text-align: center; background: rgba(124, 58, 237, 0.2); padding: 20px; border-radius: 12px; border: 1px solid #7c3aed; position: relative;">
-                <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #7c3aed; font-size: 10px; padding: 2px 8px; border-radius: 4px;">VOCÊ</div>
-                <div style="font-size: 30px; margin-bottom: 10px; color: #a78bfa;"><i class="fa-solid fa-headset"></i></div>
-                <h4>Diagnóstico (RDR)</h4>
-            </div>
-            
-            <i class="fa-solid fa-chevron-right" style="align-self: center; color: #333;"></i>
-            <div style="width: 180px; text-align: center;">
-                <div style="font-size: 30px; margin-bottom: 10px; color: #fff;"><i class="fa-solid fa-handshake"></i></div>
-                <h4>Reunião (Closer)</h4>
-            </div>
-            <i class="fa-solid fa-chevron-right" style="align-self: center; color: #333;"></i>
-            <div style="width: 180px; text-align: center;">
-                <div style="font-size: 30px; margin-bottom: 10px; color: #fff;"><i class="fa-solid fa-file-signature"></i></div>
-                <h4>Fechamento</h4>
-            </div>
-            <i class="fa-solid fa-chevron-right" style="align-self: center; color: #333;"></i>
-            <div style="width: 180px; text-align: center;">
-                <div style="font-size: 30px; margin-bottom: 10px; color: #10b981;"><i class="fa-solid fa-money-bill"></i></div>
-                <h4>Renda Passiva</h4>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 11: OBJEÇÕES E REBATES -->
-<div class="slide-container" id="slide-product-10">
-    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
-    <div class="slide-content">
-        <h2 class="text-gradient">FAQ Rápido de Objeções</h2>
-        <div class="grid-3">
-            <div class="card">
-                <h3 style="color: #fff; font-size: 20px;">1. "É Seguro?"</h3>
-                <p style="font-size: 16px; color: #94a3b8;">Dúvida sobre a solidez.</p>
-                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <p style="color: #4ade80; font-size: 16px;"><strong>Resposta:</strong> "Totalmente. O ativo é físico (imóvel). A empresa tem track record e o contrato prevê data clara de entrega."</p>
-                </div>
-            </div>
-            <div class="card">
-                <h3 style="color: #fff; font-size: 20px;">2. "Por que sem entrada?"</h3>
-                <p style="font-size: 16px; color: #94a3b8;">Parece bom demais para ser verdade.</p>
-                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <p style="color: #4ade80; font-size: 16px;"><strong>Resposta:</strong> "É uma estrutura financeira inteligente, não mágica. Em vez de pedir R$ 100k agora, diluímos isso no fluxo de obra para viabilizar o investidor."</p>
-                </div>
-            </div>
-            <div class="card">
-                <h3 style="color: #fff; font-size: 20px;">3. "Não entendi..."</h3>
-                <p style="font-size: 16px; color: #94a3b8;">Confusão com consórcio.</p>
-                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <p style="color: #4ade80; font-size: 16px;"><strong>Resposta:</strong> "Simples: Você paga parcelas fixas como um consórcio, mas recebe o imóvel em data marcada como um financiamento."</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 12: SCRIPT OFICIAL DO PRODUTO -->
-<div class="slide-container" id="slide-product-11">
+<!-- SLIDE P4: SCRIPT OFICIAL DO PRODUTO -->
+<div class="slide-container" id="slide-prod-4">
     <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
     <div class="slide-content" style="justify-content: center;">
         <h2 class="text-gradient" style="text-align: center;">O Script de Ouro</h2>
@@ -539,48 +668,22 @@
                 "O modelo é muito simples. Você investe com <span style="color: #a78bfa;">parcelas fixas</span>, <span style="color: #a78bfa;">sem entrada</span>, e já sabe desde o início quando vai receber o imóvel. Ele é entregue pronto para gerar renda no Airbnb, com gestão completa."
             </p>
         </div>
-    </div>
-</div>
-
-<!-- SLIDE 13: CTA INTERNO -->
-<div class="slide-container" id="slide-product-12">
-    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
-    <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
-        <div style="width: 100px; height: 100px; background: #fff; border-radius: 50%; display: grid; place-items: center; margin-bottom: 30px;">
-            <i class="fa-solid fa-bullseye" style="font-size: 50px; color: #7c3aed;"></i>
-        </div>
-        <h1 class="text-gradient">Seu Trabalho NÃO é Vender o Imóvel</h1>
-        <p style="font-size: 32px; color: #fff; max-width: 800px; margin-top: 20px;">
-            Você vende o <strong style="color: #4ade80;">caminho</strong> para um patrimônio sem entrada.
-        </p>
-        <div style="margin-top: 40px; font-size: 24px; color: #94a3b8;">
-            Seu único objetivo: <strong>Agendar a Reunião Estratégica.</strong>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 14: TRANSIÇÃO -->
-<div class="slide-container" id="slide-transition">
-    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
-    <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
-        <h2 style="color: #94a3b8; font-weight: 400;">Módulo de Produto Concluído <i class="fa-solid fa-check" style="color: #4ade80;"></i></h2>
-        <h1 class="text-gradient" style="font-size: 80px; margin: 20px 0;">Agora, Vamos ao Processo</h1>
-        <p>Como aplicar esse conhecimento no dia a dia com o cliente.</p>
-        <div style="margin-top: 50px;">
-             <i class="fa-solid fa-arrow-down" style="font-size: 40px; color: #7c3aed; animation: bounce 2s infinite;"></i>
+        
+        <div style="margin-top: 50px; text-align: center;">
+             <a href="#slide-sales-1" class="btn btn-primary" style="font-size: 18px; padding: 15px 30px;">IR PARA O PLAYBOOK DE VENDAS <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
 </div>
 
 <!-- ========================================== -->
-<!-- MÓDULO 2: PLAYBOOK RDR (CONTEÚDO ANTERIOR) -->
+<!-- SEÇÃO 3: PLAYBOOK RDR (VENDAS) -->
 <!-- ========================================== -->
 
-<!-- SLIDE 15: PROPÓSITO RDR -->
-<div class="slide-container" id="slide-playbook-1">
+<!-- SLIDE S1: CAPA PLAYBOOK -->
+<div class="slide-container" id="slide-sales-1">
     <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
     <div class="slide-content">
-        <div class="badge badge-sales">Módulo 2 - Playbook RDR</div>
+        <div class="badge badge-sales">Módulo 3 Playbook RDR</div>
         <h2 class="text-gradient">O Propósito do RDR</h2>
         
         <div class="grid-3" style="margin-top: 30px;">
@@ -603,44 +706,8 @@
     </div>
 </div>
 
-<!-- SLIDE 16: CADÊNCIA GERAL -->
-<div class="slide-container" id="slide-playbook-2">
-    <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
-    <div class="slide-content">
-        <h2 class="text-gradient">Cadência de Engajamento</h2>
-        
-        <div class="process-line">
-            <div class="process-step">
-                <div class="step-icon">1</div>
-                <h4>Dia 1</h4>
-                <p style="font-size: 14px;">Ligação + Msg + Áudio</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon">2</div>
-                <h4>Dia 2</h4>
-                <p style="font-size: 14px;">Follow de Autoridade</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon">3</div>
-                <h4>Dia 3</h4>
-                <p style="font-size: 14px;">Follow Curto</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon" style="border-color: #ef4444; color: #ef4444;">4</div>
-                <h4 style="color: #ef4444;">Dia 4</h4>
-                <p style="font-size: 14px;">Deal Breaker</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon">5</div>
-                <h4>Dia 5</h4>
-                <p style="font-size: 14px;">Última Tentativa</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- SLIDE 17: PRIMEIRA MENSAGEM -->
-<div class="slide-container" id="slide-playbook-3">
+<!-- SLIDE S2: PRIMEIRA MENSAGEM -->
+<div class="slide-container" id="slide-sales-2">
     <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
     <div class="slide-content">
         <div class="grid-2">
@@ -667,8 +734,8 @@
     </div>
 </div>
 
-<!-- SLIDE 18: ABERTURA LIGAÇÃO -->
-<div class="slide-container" id="slide-playbook-4">
+<!-- SLIDE S3: ABERTURA LIGAÇÃO -->
+<div class="slide-container" id="slide-sales-3">
     <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
     <div class="slide-content">
         <h2 class="text-gradient">Abertura da Ligação</h2>
@@ -687,21 +754,21 @@
     </div>
 </div>
 
-<!-- SLIDE 19: ENCERRAMENTO -->
+<!-- SLIDE FINAL -->
 <div class="slide-container" id="slide-end">
     <img src="https://i.ibb.co/ccWXHVQy/Logo-principal-2.png" class="logo-top-right">
     <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
         <img src="https://rendape.com.br/wp-content/uploads/2025/07/RendapeIcon.png" style="width: 100px; margin-bottom: 30px;">
         <h1 class="text-gradient">Treinamento Concluído</h1>
         <p style="font-size: 24px;">Você está pronto para qualificar e agendar.</p>
-        <!-- BOTÃO REMOVIDO AQUI -->
         <p style="margin-top: 30px; font-size: 14px; opacity: 0.5;">RENDAPÊ Academy 2025</p>
+        
+        <div style="margin-top: 40px;">
+            <a href="#slide-global-cover" class="btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.2);">Voltar ao Início</a>
+        </div>
     </div>
 </div>
 
-<style>
-    @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-20px);} 60% {transform: translateY(-10px);} }
-</style>
-
 </body>
 </html>
+```
